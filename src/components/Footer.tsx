@@ -1,79 +1,77 @@
-"use client";
-import React, { useState } from 'react';
-import { ArrowRight, Instagram, Facebook, Video } from 'lucide-react';
+'use client';
+
+import React from 'react';
+import { ArrowRight, Instagram, Linkedin, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    alert(`Subscribed: ${email}`);
-    setEmail("");
-  };
-
   return (
-    <footer className="w-full bg-[#E23E33] text-black px-6 py-12 md:px-12 md:py-24">
-      <div className="max-w-7xl mx-auto flex flex-col items-center text-center">
-        
-        {/* Logo Branding */}
-        <div className="mb-12">
-          <p className="font-serif italic text-sm mb-2 uppercase tracking-tight">Creative Production Company</p>
-          <h1 className="text-7xl md:text-[13rem] font-black italic tracking-tighter uppercase font-sans leading-[0.8]">
-            freshman<span className="text-2xl md:text-4xl align-top ml-1">®</span>
+    <footer className="w-full bg-[#E23E28] text-black py-10 px-6 md:px-12 flex flex-col justify-between min-h-screen font-sans overflow-x-hidden">
+      {/* Top Section: Branding - Fixed Alignment */}
+      <div className="w-full flex flex-col items-center text-center mt-10">
+        <p className="text-sm md:text-xl font-bold tracking-[0.2em] mb-4 uppercase italic">
+          Creative Production Company
+        </p>
+        <div className="w-full flex justify-center items-start">
+          <h1 className="text-[14vw] md:text-[15rem] font-black italic tracking-tighter uppercase leading-[0.8] whitespace-nowrap">
+            FRESHMAN<span className="text-[4vw] md:text-4xl align-top ml-1">®</span>
           </h1>
         </div>
+      </div>
 
-        {/* Newsletter Form */}
-        <div className="max-w-md w-full mb-20">
-          <p className="font-serif text-lg md:text-xl leading-snug mb-8">
-            Keep in the loop. Be the first to know about our latest work. Subscribe to our newsletter.
-          </p>
-          
-          <form onSubmit={handleSubmit} className="relative w-full border-b-2 border-black pb-3">
-            <input 
-              type="email" 
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address..." 
-              className="w-full bg-transparent border-none outline-none placeholder:text-black/50 text-lg italic font-serif"
-            />
-            <button type="submit" className="absolute right-0 bottom-3 hover:scale-125 transition-transform">
-              <ArrowRight size={28} />
-            </button>
-          </form>
+      {/* Middle Section: Newsletter */}
+      <div className="max-w-2xl mx-auto text-center my-12">
+        <h2 className="text-2xl md:text-5xl font-serif italic leading-tight mb-8">
+          Keep in the loop. Be the first to know about our latest work. Subscribe to our newsletter.
+        </h2>
+        
+        <div className="relative mt-10">
+          <input 
+            type="email" 
+            placeholder="Your email address..." 
+            className="w-full bg-transparent border-b-2 border-black py-4 text-xl md:text-2xl focus:outline-none placeholder:text-black/50 font-serif italic"
+          />
+          <button 
+            className="absolute right-0 bottom-4 hover:translate-x-2 transition-transform" 
+            aria-label="Subscribe"
+          >
+            <ArrowRight size={32} />
+          </button>
+        </div>
+      </div>
+
+      {/* Bottom Section: Icons, Contacts & Copyright */}
+      <div className="w-full pt-8 border-t border-black flex flex-col md:flex-row justify-between items-center gap-8">
+        
+        {/* Left: Social Media Icons & Phone */}
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8 order-2 md:order-1">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+            <Instagram size={24} />
+          </a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:scale-110 transition-transform">
+            <Linkedin size={24} />
+          </a>
+          <a href="mailto:mukherjeearnav60@gmail.com" className="hover:scale-110 transition-transform">
+            <Mail size={24} />
+          </a>
+          <div className="flex items-center gap-2 font-bold text-sm md:text-base whitespace-nowrap">
+            <Phone size={20} />
+            <span>9999999999</span>
+          </div>
         </div>
 
-        {/* Bottom Metadata */}
-        <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-10 items-center text-[11px] font-sans font-bold uppercase tracking-widest">
-          
-          {/* Socials Column */}
-          <div className="flex flex-col items-center md:items-start order-2 md:order-1">
-            <span className="mb-3 opacity-60 lowercase font-serif italic tracking-normal">(socials)</span>
-            <div className="flex gap-5">
-              <a href="https://instagram.com" target="_blank" className="hover:text-white transition-colors flex items-center gap-1">
-                <Instagram size={14} /> IG
-              </a>
-              <a href="https://vimeo.com" target="_blank" className="hover:text-white transition-colors flex items-center gap-1">
-                <Video size={14} /> VI
-              </a>
-              <a href="https://facebook.com" target="_blank" className="hover:text-white transition-colors flex items-center gap-1">
-                <Facebook size={14} /> FB
-              </a>
-            </div>
-          </div>
+        {/* Center: Legal */}
+        <div className="text-sm tracking-normal font-serif italic order-1 md:order-2 text-center">
+          2026© FRESHMAN STUDIOS
+        </div>
 
-          <div className="order-1 md:order-2 text-sm tracking-normal font-serif italic">
-            2026© Real Always Wins
-          </div>
-
-          <div className="flex flex-col items-center md:items-end order-3">
-            <span className="mb-3 opacity-60 lowercase font-serif italic tracking-normal">(contact)</span>
-            <a href="mailto:INFO@FRESHMAN.TV" className="hover:underline underline-offset-4">
-              INFO@FRESHMAN.TV
-            </a>
-          </div>
-          
+        {/* Right: Back to Top */}
+        <div className="hidden md:block text-xs font-bold uppercase tracking-widest order-3">
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} 
+            className="hover:opacity-50 transition-opacity"
+          >
+            Back to Top ↑
+          </button>
         </div>
       </div>
     </footer>
